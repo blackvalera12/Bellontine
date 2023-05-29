@@ -1,0 +1,21 @@
+import ccxt
+
+# Налаштування API ключів
+api_key = 'YOUR_API_KEY'
+api_secret = 'YOUR_API_SECRET'
+
+# Створення об'єкту біржі
+exchange = ccxt.binance({
+    'apiKey': api_key,
+    'secret': api_secret,
+})
+
+# Функція для отримання поточної ціни для певної пари валют
+def get_current_price(symbol):
+    ticker = exchange.fetch_ticker(symbol)
+    return ticker['close']
+
+# Приклад використання
+symbol = 'BTC/USDT'  # Пара валют
+price = get_current_price(symbol)
+print(f'Поточна ціна {symbol}: {price}')
